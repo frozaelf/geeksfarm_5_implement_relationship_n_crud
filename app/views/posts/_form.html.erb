@@ -1,0 +1,71 @@
+<%= form_for @comment, remote: true do |f| %>
+
+        <%= f.hidden_field :article_id, value: @article.id %>
+
+        <% if current_user %>
+
+            <%= f.hidden_field :user_id, value: current_user.id %>
+
+        <% end %>
+
+        <br/>
+
+        <%= f.label :content %>
+
+        <%= f.text_area :content, cols: 20, rows: 10 %>
+
+        <br/>
+
+        <%= f.submit :submit %>
+
+    <% end %>
+<!-- <%= form_for(@article, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @article.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h4>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :image, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.file_field :image, class: "form-control" %>
+  <input readonly="" class="form-control" placeholder="Placeholder only..." type="text">
+      
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-10">
+        <div class="checkbox">
+          <label>
+      <%= f.check_box :published, class: "" %> Published
+          </label>
+        </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %> -->

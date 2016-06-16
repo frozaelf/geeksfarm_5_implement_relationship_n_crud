@@ -1,0 +1,47 @@
+<div class="row">
+  	<div class="col-md-6">
+	  <h1>Listing articles</h1>
+  	</div>
+	<div class="col-md-6">
+		<br>
+	  <%= link_to new_article_path, class: 'btn btn-primary pull-right btn-raised' do %>
+		<span class="glyphicon glyphicon-plus"></span>
+	    New Article
+	  <% end %>
+  	</div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Image</th>
+            <th>Published</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @articles) do |article| %>
+            <td><%= article.title %></td>
+            <td><%= article.content.truncate(255) %></td>
+            <td><%= image_tag article.image.url(:thumb),:class => "img-responsive" %></td>
+            <td><%= article.published %></td>
+            <td><%= link_to 'Show', article %></td>
+        <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @articles, :theme => 'twitter-bootstrap-3' %>
+
+<h2>Import</h2>
+<%= form_tag import_path, multipart:true do %>
+		<%= file_field_tag "file"%>
+  		
+  		<button type="submit" name="submit" class="btn-raised btn-primary btn">Import</button>
+ <% end %>
