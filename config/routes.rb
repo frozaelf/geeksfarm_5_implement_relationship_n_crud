@@ -1,13 +1,14 @@
 WebArticles::Application.routes.draw do
   resources :posts
   resources :users
+  get "admin/articles/pdf" => "articles#pdf", :as => "pdf"
   get "admin/articles/export/:id" => "articles#export", :as => "export"
   post "admin/articles/import" => "articles#import", :as => "import"
   scope '/admin' do
     resources :articles, :sessions, :comments
      
   end  
-  
+  root "posts#index"
   get "admin/sign_up" => "users#new", :as => "sign_up"
   get "admin/sign_in" => "sessions#new", :as => "sign_in"
   # The priority is based upon order of creation: first created -> highest priority.

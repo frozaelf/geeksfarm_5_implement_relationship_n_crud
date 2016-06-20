@@ -27,28 +27,45 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Debugging
 gem 'bcrypt-ruby', require: 'bcrypt'
 
+# Upload Image
 gem 'rmagick'
-
 gem 'paperclip'
 
+# Generate Bootstrap template
 gem 'bootstrap-generators', '~> 3.3.4'
 
 gem 'humanizer'
 
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
 
+# Captcha Google
 gem "recaptcha", require: "recaptcha/rails"
 
+# Slug
 gem 'friendly_id'
 
+# Pagging
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+# Export XLSX
 gem 'axlsx'
 gem 'axlsx_rails'
+
+# Import XLSX
 gem 'roo'
+
+# Export Pdf
+gem 'prawn'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+
+# Datatables
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-ui-rails'   
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
