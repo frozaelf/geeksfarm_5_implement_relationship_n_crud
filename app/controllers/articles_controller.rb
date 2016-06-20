@@ -118,12 +118,17 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1
   # DELETE /articles/1.json
-  def destroy
-    @article.destroy
-    respond_to do |format|
-      format.html { redirect_to articles_url }
-      format.json { head :no_content }
-    end
+  def destroy  
+      @article = Article.find_by_id(params[:id])  
+      @comment = Comment.find_by_article_id(params[:id])
+      @comment.destroy
+      if @article.destroy  
+          flash[:notice] = "Success Delete a Records"  
+          redirect_to action: 'index'
+        else  
+          flash[:error] = "fails delete a records"  
+          redirect_to action: 'index'  
+      end  
   end
 
   private

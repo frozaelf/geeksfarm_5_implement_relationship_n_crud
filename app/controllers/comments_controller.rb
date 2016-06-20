@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
             end
 
         end
-
+  def destroy
+  end
 
         private
 
