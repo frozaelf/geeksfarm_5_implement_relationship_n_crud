@@ -5,7 +5,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order("title").page(params[:page]).per(5)
+    #@articles = Article.order("title").page(params[:page]).per(5)
+    respond_to do |format|
+      format.html
+      format.json { render json: ArticleDatatable.new(view_context) }
+    end
   end
 
   # GET /articles/1
@@ -120,8 +124,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.json
   def destroy  
       @article = Article.find_by_id(params[:id])  
-      @comment = Comment.find_by_article_id(params[:id])
-      @comment.destroy
+      @comment = Comment.find_by_article_id(params[:id]) 
       if @article.destroy  
           flash[:notice] = "Success Delete a Records"  
           redirect_to action: 'index'

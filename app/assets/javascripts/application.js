@@ -12,8 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables.min
+//= require dataTables/dataTables.bootstrap.min
+//= require dataTables/responsive/dataTables.responsive.min
+//= require dataTables/responsive/responsive.bootstrap.min
 //= require bootstrap
-//= require bootstrap-material-design/js/material
-//= require bootstrap-material-design/js/ripples
+//= require bootstrap-material-design/js/material.min
+//= require bootstrap-material-design/js/ripples.min
 //= require colorbox/colorbox
 //= require custom
+//= require articles

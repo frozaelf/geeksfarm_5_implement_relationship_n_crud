@@ -9,9 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap/css/bootstrap
- *= require bootstrap-material-design/css/bootstrap-material-design
- *= require bootstrap-material-design/css/ripples
+ *= require bootstrap/css/bootstrap.min
+ *= require bootstrap-material-design/css/bootstrap-material-design.min
+ *= require bootstrap-material-design/css/ripples.min
+ *= require dataTables/dataTables.bootstrap.min
+//= require dataTables/responsive/responsive.bootstrap.min
  *= require colorbox/colorbox
  *= require custom
  */

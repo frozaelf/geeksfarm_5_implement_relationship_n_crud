@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0"
+#ruby "2.0.0"
 
-gem 'rails_12factor', group: "production"
+#gem 'rails_12factor', group: "production"
 
-gem 'thin'
+#gem 'thin'
     
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
@@ -71,7 +71,14 @@ gem 'wkhtmltopdf-binary'
 
 # Datatables
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-gem 'jquery-ui-rails'   
+gem 'ajax-datatables-rails'
+
+#redist
+gem 'redis-rails'
+gem 'redis'
+
+#redist
+gem 'sidekiq'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
