@@ -25,7 +25,15 @@ class ArticlesController < ApplicationController
         format.xlsx{response.headers['Content-Disposition'] = 'attachment; filename="all_articles.xlsx"'}
       end
   end
-  
+  def test_api    
+    #debugger
+        
+    request_uri = 'http://0.0.0.0:3000/api/v1/bycycles'
+    url = 'http://0.0.0.0:3000/api/v1/bycycles'
+    response = RestClient.get(request_uri)
+    @show = JSON.parse(response)    
+    @bycycles = @show["bycycles"]                     
+  end
   def export
     
         @articles = Article.all.where(slug:params[:id])

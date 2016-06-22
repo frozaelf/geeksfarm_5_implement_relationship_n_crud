@@ -1,6 +1,7 @@
 WebArticles::Application.routes.draw do
   resources :posts
   resources :users
+  get "admin/articles/test_api" => "articles#test_api", :as => "test_api"
     
   get "admin/articles/pdf" => "articles#pdf", :as => "pdf"
   get "admin/articles/export/:id" => "articles#export", :as => "export"
