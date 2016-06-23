@@ -5,6 +5,8 @@ WebArticles::Application.routes.draw do
   get "admin/articles/pdf" => "admin/articles#pdf", :as => "pdf"
   get "admin/articles/export/:id" => "admin/articles#export", :as => "export"
   post "admin/articles/import" => "admin/articles#import", :as => "import"
+  post "admin/articles/delete_selected" => "admin/articles#delete_selected", :as => "delete_selected"
+  
   #scope '/admin' do
   #     resources :articles , :sessions , :comments
   #end  
@@ -13,7 +15,7 @@ WebArticles::Application.routes.draw do
   end
   root "posts#index"
   get "admin/sign_up" => "users#new", :as => "sign_up"
-  get "admin/sign_in" => "sessions#new", :as => "sign_in"
+  get "admin/sign_in" => "admin/sessions#new", :as => "sign_in"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,4 @@
+alert('<%= params[:id].count %> selected data has been deleted');
+$(document).ready(function () {
+	$('#articles-table').dataTable()._fnAjaxUpdate();
+});

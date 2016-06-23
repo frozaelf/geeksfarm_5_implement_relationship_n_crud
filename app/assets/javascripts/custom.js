@@ -49,7 +49,9 @@ $(function(){
       serverSide: true,
       ajax: $('#articles-table').data('source'),
       pagingType: 'full_numbers',
+      "order": [[ 0, "desc" ]],
       columns: [
+        { sortable: true, searchable: true },
         { sortable: true, searchable: true },
         { sortable: true, searchable: true },
         { sortable: false, searchable: false },

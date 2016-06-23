@@ -1,7 +1,6 @@
 class ArticleDatatable < AjaxDatatablesRails::Base
   include Rails.application.routes.url_helpers
-  def_delegators :@view, :link_to, :vendor_skus_path, :vendor_path
-
+  def_delegators :@view, :link_to, :vendor_skus_path, :vendor_path, :check_box_tag
   
   include AjaxDatatablesRails::Extensions::Kaminari
   # include AjaxDatatablesRails::Extensions::WillPaginate
@@ -10,13 +9,13 @@ class ArticleDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.name'
-    @sortable_columns ||= ['articles.title','articles.content']
+    @sortable_columns ||= ['articles.id','articles.title','articles.content']
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.name'
-    @searchable_columns ||= ['articles.title','articles.content' ]
+    @searchable_columns ||= ['articles.id','articles.title','articles.content' ]
   end
 
   private
@@ -24,6 +23,7 @@ class ArticleDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
+        "<input type='checkbox' name='id[]' value='#{record.id}'>",
         record.title,
         record.content.truncate(20),
         "<img src='#{record.image.url(:thumb)}' alt='' class='img-responsive'>",

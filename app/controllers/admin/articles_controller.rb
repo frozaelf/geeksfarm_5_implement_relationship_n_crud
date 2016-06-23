@@ -50,41 +50,40 @@ class Admin::ArticlesController < ApplicationController
     Article.import(params[:file])
     redirect_to admin_articles_url, notice: "Articles imported."
   end
-  
-    
+      
   def pdf
-    # Creates a new PDF document
-    pdf = Prawn::Document.new
-    pdf.text "My Beautiful Background."
-    
-    filename = "#{Rails.root}/app/assets/images/saber.jpg"
-    # Prawn supports both png and jpg images
-    pdf.image filename, :width => 150
-    
-    # Example 2 background image
-    pdf.start_new_page
-    
-    # Record the original y value (cause y=0 is the bottom of the page)
-    y_position = pdf.cursor
-    pdf.text "The image will be above."
-    # Put the image with absolute positioning
-    pdf.image filename, :at => [50, y_position]
-    # Write on top of the image
-    pdf.text "The image will be below."
-    
-    # Example 3 scaled images
-    pdf.start_new_page
-    pdf.text "Scale by setting only the width"
-    pdf.image filename, :width => 150
-    pdf.move_down 20
-    pdf.text "Scale by setting only the height"
-    pdf.image filename, :height => 100
-    pdf.move_down 20
-    pdf.text "Stretch to fit the width and height provided"
-    pdf.image filename, :width => 500, :height => 100
-    
-    send_data pdf.render, :filename => "x.pdf", :type => "application/pdf", :disposition => 'inline'
- end
+      # Creates a new PDF document
+      pdf = Prawn::Document.new
+      pdf.text "My Beautiful Background."
+      
+      filename = "#{Rails.root}/app/assets/images/saber.jpg"
+      # Prawn supports both png and jpg images
+      pdf.image filename, :width => 150
+      
+      # Example 2 background image
+      pdf.start_new_page
+      
+      # Record the original y value (cause y=0 is the bottom of the page)
+      y_position = pdf.cursor
+      pdf.text "The image will be above."
+      # Put the image with absolute positioning
+      pdf.image filename, :at => [50, y_position]
+      # Write on top of the image
+      pdf.text "The image will be below."
+      
+      # Example 3 scaled images
+      pdf.start_new_page
+      pdf.text "Scale by setting only the width"
+      pdf.image filename, :width => 150
+      pdf.move_down 20
+      pdf.text "Scale by setting only the height"
+      pdf.image filename, :height => 100
+      pdf.move_down 20
+      pdf.text "Stretch to fit the width and height provided"
+      pdf.image filename, :width => 500, :height => 100
+      
+      send_data pdf.render, :filename => "x.pdf", :type => "application/pdf", :disposition => 'inline'
+  end
   # GET /articles/new
   def new
     @article = Article.new
@@ -141,7 +140,14 @@ class Admin::ArticlesController < ApplicationController
           redirect_to action: 'index'  
       end  
   end
-
+  def delete_selected
+    #Article.where(:id => params[:id]).destroy_all
+    if params[:id].blank?
+      render js: "alert('Select Please -_-')"    
+    else
+    Article.where(:id => params[:id]).destroy_all 
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
