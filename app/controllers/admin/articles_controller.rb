@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class Admin::ArticlesController < ApplicationController
   layout 'backend', only: [:show, :edit, :index]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :check_current_user
@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
   
   def import
     Article.import(params[:file])
-    redirect_to articles_url, notice: "Articles imported."
+    redirect_to admin_articles_url, notice: "Articles imported."
   end
   
     
@@ -105,7 +105,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to [:admin, @article], notice: 'Article was successfully created.' }
         format.json { render action: 'show', status: :created, location: @article }
       else
         format.html { render action: 'new' }
@@ -119,7 +119,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to [:admin, @article], notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -131,7 +131,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy  
-      @article = Article.find_by_id(params[:id])  
+      @article = Article.friendly.find(params[:id])  
       @comment = Comment.find_by_article_id(params[:id]) 
       if @article.destroy  
           flash[:notice] = "Success Delete a Records"  

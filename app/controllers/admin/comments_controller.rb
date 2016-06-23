@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Admin::CommentsController < ApplicationController
 
         before_action :check_current_user, only: [:new, :create, :edit, :update, :destroy]
 

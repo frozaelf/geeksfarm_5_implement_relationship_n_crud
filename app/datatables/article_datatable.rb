@@ -27,7 +27,7 @@ class ArticleDatatable < AjaxDatatablesRails::Base
         record.title,
         record.content.truncate(20),
         "<img src='#{record.image.url(:thumb)}' alt='' class='img-responsive'>",
-        "#{link_to("Show", record,:class=>"")}"+"&nbsp;#{link_to 'Edit', edit_article_path(record)}"+"&nbsp;#{link_to 'Destroy', article_path(record.id), method: :delete, data: { confirm: 'Are you sure?' }}"
+        "#{link_to("Show", [:admin,record],:class=>"")}"+"&nbsp;#{link_to 'Edit', [:edit, :admin, record]}"+"&nbsp;#{link_to 'Destroy', [:admin, record], confirm: 'Are you sure?', method: :delete}"
        # comma separated list of the values for each cell of a table row
         # example: record.attribute,
       ]

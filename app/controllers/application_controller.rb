@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
           flash[:error] = "plase login first before run the action"
 
-          redirect_to new_session_url
+          redirect_to new_admin_session_url
 
       else
 

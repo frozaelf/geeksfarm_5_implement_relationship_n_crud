@@ -35,7 +35,7 @@
         </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	      <li><a href="">Hello <%= current_user.username %></a></li>
-	      <li><%= link_to 'Log-Out', session_path(current_user.id), method: "DELETE" %></li>
+	      <li><%= link_to 'Log-Out', admin_session_path(current_user.id), method: "DELETE" %></li>
 	    </ul>
       </div>
     </div>

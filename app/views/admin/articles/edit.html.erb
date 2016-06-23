@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to articles_path, class: 'btn btn-default' do %>
+  <%= link_to admin_articles_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to @article, class: 'btn btn-primary' do %>
+  <%= link_to [:admin, @article], class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
     Show
   <% end %>

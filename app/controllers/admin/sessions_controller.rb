@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Admin::SessionsController < ApplicationController
       layout 'application'
   
   def create
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
             flash[:notice] = "Welcome #{user.username}" 
 
-            redirect_to articles_url
+            redirect_to admin_articles_url
 
         else
 

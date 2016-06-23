@@ -4,13 +4,13 @@
   	</div>
 	<div class="col-md-6">
 		<br>
-	  <%= link_to new_article_path, class: 'btn btn-primary pull-right btn-raised' do %>
+	  <%= link_to new_admin_article_path, class: 'btn btn-primary pull-right btn-raised' do %>
 		<span class="glyphicon glyphicon-plus"></span>
 	    New Article
 	  <% end %>
   	</div>
 </div>
-<table class="table table-striped table-bordered dt-responsive nowrap" id="articles-table", data-source="<%= articles_path(format: :json) %>">
+<table class="table table-striped table-bordered dt-responsive nowrap" id="articles-table", data-source="<%= admin_articles_path(format: :json) %>">
   <thead>
     <tr>
       <th>Title</th>
