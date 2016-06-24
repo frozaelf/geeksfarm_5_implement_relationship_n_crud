@@ -1,4 +1,4 @@
-  <%= content_tag_for(:tr, @articles) do |article| %>
+<%= content_tag_for(:tr, @articles) do |article| %>
   	<div class="panel panel-primary">
      	<div class="panel-body">
              <h4><%= article.title %></h4>
@@ -11,3 +11,5 @@
  	</div>
   <% end %>
 <%= paginate @articles, :theme => 'twitter-bootstrap-3' %>
+
+<!-- <%= cktext_area :body, :class => 'ckeditor'%> -->

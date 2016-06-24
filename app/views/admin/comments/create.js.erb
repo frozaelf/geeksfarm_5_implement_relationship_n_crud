@@ -1,6 +1,7 @@
 	<% if @comment.errors.present? %>
         $("#form-comment").html(" <%= j( render 'admin/articles/form_comments' ) %>");
-    	$($(".field_with_errors")[0]).append("<p class = 'message'> <%= escape_javascript( @comment.errors[:content].first ) %></p>");
+        alert("<%= escape_javascript( @comment.errors[:content].first ) %>");
+    	<!-- $($(".field_with_errors")[0]).append("<p class = 'message'> <%= escape_javascript( @comment.errors[:content].first ) %></p>"); -->
     <% else %>
             $("#list-comments").html(" <%= j( render 'admin/articles/comments' ) %>");
             $("#comment_content").val('');

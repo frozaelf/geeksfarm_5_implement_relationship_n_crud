@@ -143,7 +143,16 @@ class Admin::ArticlesController < ApplicationController
   def delete_selected
     #Article.where(:id => params[:id]).destroy_all
     if params[:id].blank?
-      render js: "alert('Select Please -_-')"    
+      render js: "
+      $.notify({
+                // options
+                message: 'Selected data not found'
+              },{
+                // settings
+                type: 'danger', 
+                delay: 1000
+              });
+    "    
     else
     Article.where(:id => params[:id]).destroy_all 
     end

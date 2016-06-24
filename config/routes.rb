@@ -1,4 +1,5 @@
 WebArticles::Application.routes.draw do
+  mount Ckeditor::Engine => "/ckeditor"
   resources :posts
   resources :users
   get "admin/articles/test_api" => "admin/articles#test_api", :as => "test_api"    

@@ -24,7 +24,7 @@
              <article>
              <h4><b><%= @article.title %></b></h4>
              <p>
-                 <%= @article.content %>   
+                 <%= @article.content.html_safe %>   
              </p></article>
          </div>
  	</div>

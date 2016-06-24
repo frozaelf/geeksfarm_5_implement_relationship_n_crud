@@ -42,6 +42,7 @@ gem 'paperclip'
 
 # Generate Bootstrap template
 gem 'bootstrap-generators', '~> 3.3.4'
+gem 'bootstrap-growl-rails'
 
 gem 'humanizer'
 
@@ -80,7 +81,9 @@ gem 'redis'
 #redist
 gem 'sidekiq'
 
+gem 'ckeditor'
 
+gem 'tinymce-rails'
 gem 'rest-client'
 
 group :doc do

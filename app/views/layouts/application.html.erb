@@ -15,6 +15,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,5 +24,14 @@
 
     <%= yield %>
   </div>
+  <textarea></textarea>
+  <script type="text/javascript">$(document).ready(function() {
+    if ($('textarea').length > 0) {
+        var data = $('textarea');
+        $.each(data, function(i) {
+            CKEDITOR.replace(data[i].id);
+        });
+    }
+});</script>
 </body>
 </html>
