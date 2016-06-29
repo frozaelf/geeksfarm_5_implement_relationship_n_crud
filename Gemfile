@@ -77,6 +77,9 @@ gem 'ajax-datatables-rails'
 #redist
 gem 'redis-rails'
 gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
 
 #redist
 gem 'sidekiq'

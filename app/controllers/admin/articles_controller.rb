@@ -15,7 +15,12 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show         
-        @article = Article.friendly.find(params[:id])
+     @articles =  $redis.get("@articles")
+    if @articles.nil?
+      @articles = Article.friendly.find(params[:id]).to_json
+      $redis.set("@articles", @articles)
+    end
+    @articles  = JSON.load @articles
 
         @comments = @article.comments.order("id desc")
 

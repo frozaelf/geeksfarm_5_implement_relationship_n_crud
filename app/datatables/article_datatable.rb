@@ -35,7 +35,7 @@ class ArticleDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    Article.all
+      Article.all
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

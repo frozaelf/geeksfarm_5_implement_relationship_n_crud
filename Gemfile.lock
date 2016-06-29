@@ -157,6 +157,8 @@ GEM
       pdf-core (~> 0.6.1)
       ttfunk (~> 1.4.0)
     rack (1.5.5)
+    rack-cache (1.6.1)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.0.1)
@@ -185,8 +187,13 @@ GEM
     redis-activesupport (4.1.5)
       activesupport (>= 3, < 5)
       redis-store (~> 1.1.0)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     redis-rack (1.5.0)
       rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-rack-cache (1.2.4)
+      rack-cache (~> 1.2)
       redis-store (~> 1.1.0)
     redis-rails (4.0.0)
       redis-actionpack (~> 4)
@@ -287,6 +294,8 @@ DEPENDENCIES
   rails (= 4.0.1)
   recaptcha
   redis
+  redis-namespace
+  redis-rack-cache
   redis-rails
   rest-client
   rmagick
