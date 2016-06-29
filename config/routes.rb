@@ -1,11 +1,16 @@
 WebArticles::Application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
+  get "posts/chart" => "posts#chart", :as => "chart"
+  get "posts/visits_by_day" => "posts#visits_by_day", :as => "visits_by_day"
+  get "posts/word" => "posts#word", format: 'docx'
   resources :posts
   resources :users
   get "admin/articles/test_api" => "admin/articles#test_api", :as => "test_api"    
   get "admin/articles/pdf" => "admin/articles#pdf", :as => "pdf"
   get "admin/articles/export/:id" => "admin/articles#export", :as => "export"
   post "admin/articles/import" => "admin/articles#import", :as => "import"
+  get "admin/articles/export_csv/:id" => "admin/articles#export_csv", :as => "export_csv"
+  post "admin/articles/import_csv" => "admin/articles#import_csv", :as => "import_csv"
   post "admin/articles/delete_selected" => "admin/articles#delete_selected", :as => "delete_selected"
   
   #scope '/admin' do

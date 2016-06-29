@@ -1,49 +1,83 @@
-# config valid only for current version of Capistrano
-lock '3.5.0'
+lock '3.0'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+  set :application, '<your-name-application>'
 
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+  set :stages, %w(staging)
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+  set :default_stage, 'staging'
 
-# Default value for :scm is :git
-# set :scm, :git
+  set :use_sudo, false
 
-# Default value for :format is :airbrussh.
-# set :format, :airbrussh
+  set :scm, :git
 
-# You can configure the Airbrussh format using :format_options.
-# These are the defaults.
-# set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
+  set :deploy_via, :remote_cache
 
-# Default value for :pty is false
-# set :pty, true
+  set :scm_verbose, true
 
-# Default value for :linked_files is []
-# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+  set :keep_releases, 5
 
-# Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system')
+  set :normalize_asset_timestamps, false
 
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+  set :repository, 'git@host_name:user_name/name-project.git'
 
-# Default value for keep_releases is 5
-# set :keep_releases, 5
+  namespace :config_app do
 
-namespace :deploy do
+    task :bundle do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+      on roles(:app) do
+
+        execute "cd #{current_path} && bundle install --without=test development"
+
+      end
+
     end
+
+
+    desc "drop, create, migrate, seed"
+
+    task :setup_migrate do
+
+      on roles(:app) do
+
+        execute "cd #{current_path}; bundle exec rake db:drop db:create db:migrate db:seed RAILS_ENV=#{self.stage}"
+
+      end
+
+    end
+
+
+    desc 'stop server thin'
+
+    task :stop_server do
+
+      on roles(:app) do
+
+        execute "kill -9 $(cat #{current_path}/tmp/pids/server.pid)"
+
+      end
+
+    end
+
+
+    desc 'start server thin'
+
+    task :start_server do
+
+      on roles(:app) do
+
+        execute "cd #{current_path} && thin start"
+
+      end
+
+    end
+
   end
 
-end
+
+  before "deploy:restart", "config_app:bundle"
+
+  after "deploy", "config_app:setup_migrate"
+
+  after "deploy", "config_app:stop_server"
+
+  after "deploy", "config_app:start_server"

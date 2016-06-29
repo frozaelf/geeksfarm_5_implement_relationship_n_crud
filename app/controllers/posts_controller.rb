@@ -16,4 +16,16 @@ class PostsController < ApplicationController
   def new
     @article = Article.new
   end
+  def chart
+    @visits = Visit.all
+  end
+  def visits_by_day
+   render json: Visit.group_by_day(:visited_at, format: "%B %d, %Y").count
+  end
+  def word
+    @h1_text = 'John Dugan'
+    respond_to do |format|
+      format.docx { headers["Content-Disposition"] = "attachment; filename=\"word.docx\"" }
+    end
+  end
 end

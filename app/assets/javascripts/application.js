@@ -20,8 +20,9 @@
 //= require bootstrap-material-design/js/material.min
 //= require bootstrap-material-design/js/ripples.min
 //= require colorbox/colorbox
-//= require tinymce-jquery
 //= require ckeditor/init
 //= require bootstrap-notify
+//= require Chart.bundle
+//= require chartkick
 //= require custom
 //= require articles

@@ -49,9 +49,9 @@ $(function(){
       serverSide: true,
       ajax: $('#articles-table').data('source'),
       pagingType: 'full_numbers',
-      "order": [[ 0, "desc" ]],
+      "order": [[ 2, "desc" ]],
       columns: [
-        { sortable: true, searchable: true },
+        { sortable: false, searchable: true },
         { sortable: true, searchable: true },
         { sortable: true, searchable: true },
         { sortable: false, searchable: false },
@@ -61,3 +61,8 @@ $(function(){
   });
 
 }).call(this);
+$(document).ready(function () {
+$("#flowcheckall").click(function () {
+        $('#articles-table tbody input[type="checkbox"]').prop('checked', this.checked);
+    });
+});

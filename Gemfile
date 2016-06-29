@@ -83,8 +83,15 @@ gem 'sidekiq'
 
 gem 'ckeditor'
 
-gem 'tinymce-rails'
 gem 'rest-client'
+
+gem "chartkick"
+gem 'groupdate'
+gem 'active_median'
+
+# gem 'rubyzip'
+# gem 'zip-zip'
+# gem 'caracal-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -99,6 +106,11 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
+ gem 'capistrano-rails'
+
+  gem 'capistrano-thin'
+
+  gem 'capistrano-rbenv'
 
 # Use debugger
 gem 'byebug', group: [:development, :test]

@@ -6,12 +6,16 @@ class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
   validates_attachment :image, presence: true,content_type: { content_type: "image/jpeg" } 
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |product|
-        csv << article.attributes.values_at(*column_names)
-      end
+  def self.to_csv()
+    headers = ['Title', 'Content']
+    CSV.generate_line headers
+    @articles.each do |article|
+    CSV.generate_line([article.title, article.content])
+    end
+    headers = ['Title', 'Content']
+    CSV.generate_line headers
+    @comments.each do |comment|
+    CSV.generate_line([comment.content])
     end
   end
   
@@ -38,10 +42,19 @@ class Article < ActiveRecord::Base
     end
 
   end
-  
+  def self.import_csv(file)
+    spreadsheet = open_spreadsheet(file)
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      article = find_by_id(row["id"]) || new
+      article.attributes = row.to_hash.slice(*accessible_attributes)
+      article.save!
+    end
+  end
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
-     when '.csv' then Roo::Csv.new(file.path, nil, :ignore)
+     when '.csv' then Roo::Csv.new(file.path, packed: false, file_warning: :ignore)
      when '.xls' then Roo::Excel.new(file.path, nil, :ignore)
      when '.xlsx' then Roo::Excelx.new(file.path, nil, :ignore)
      else raise "Unknown file type: #{file.original_filename}"

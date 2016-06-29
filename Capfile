@@ -1,8 +1,22 @@
-# Load DSL and set up stages
-require "capistrano/setup"
+#load configuration for capistrano v3
 
-# Include default deployment tasks
-require "capistrano/deploy"
+  require 'capistrano/setup'
+
+  require 'capistrano/deploy'
+
+
+  #load the configuration for capistrano-rails
+
+  require 'capistrano/bundler'
+
+  require 'capistrano/rails/migrations'
+
+  require 'capistrano/rails/assets'
+
+
+  #load the configuration for capistrano-thin
+
+  require 'capistrano/thin'
 
 # Include tasks from other gems included in your Gemfile
 #

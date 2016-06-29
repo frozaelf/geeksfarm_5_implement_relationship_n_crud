@@ -9,13 +9,13 @@ class ArticleDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.name'
-    @sortable_columns ||= ['articles.id','articles.title','articles.content']
+    @sortable_columns ||= ['articles.title','articles.content']
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.name'
-    @searchable_columns ||= ['articles.id','articles.title','articles.content' ]
+    @searchable_columns ||= ['articles.title','articles.content' ]
   end
 
   private

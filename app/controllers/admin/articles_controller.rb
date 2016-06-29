@@ -50,7 +50,23 @@ class Admin::ArticlesController < ApplicationController
     Article.import(params[:file])
     redirect_to admin_articles_url, notice: "Articles imported."
   end
-      
+    
+  def export_csv    
+      @articles = Article.all.where(slug:params[:id])
+      @comments = @articles.first.comments.order("comments.id desc")
+      @comment = Comment.new
+      respond_to do |format|
+        format.html
+        format.csv do
+          headers['Content-Disposition'] = "attachment; filename=\"Article\""
+          headers['Content-Type'] ||= 'text/csv'
+        end
+      end      
+  end  
+  def import_csv
+    Article.import_csv(params[:file])
+    redirect_to admin_articles_url, notice: "Articles imported."
+  end
   def pdf
       # Creates a new PDF document
       pdf = Prawn::Document.new
@@ -101,7 +117,6 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
     respond_to do |format|
       if @article.save
         format.html { redirect_to [:admin, @article], notice: 'Article was successfully created.' }
