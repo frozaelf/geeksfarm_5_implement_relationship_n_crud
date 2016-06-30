@@ -58,6 +58,10 @@ gem 'friendly_id'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+# gmaps-autocomplete
+gem 'jquery-ui-rails'
+gem 'gmaps-autocomplete-rails'
+
 # Export XLSX
 gem 'axlsx'
 gem 'axlsx_rails'

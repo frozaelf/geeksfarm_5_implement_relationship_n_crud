@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require dataTables/jquery.dataTables.min
 //= require dataTables/dataTables.bootstrap.min
 //= require dataTables/responsive/dataTables.responsive.min
@@ -24,5 +25,6 @@
 //= require bootstrap-notify
 //= require Chart.bundle
 //= require chartkick
+//= require gmaps/gmaps
 //= require custom
 //= require articles

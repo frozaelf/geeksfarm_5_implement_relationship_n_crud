@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery-ui
  *= require bootstrap/css/bootstrap.min
  *= require bootstrap-material-design/css/bootstrap-material-design.min
  *= require bootstrap-material-design/css/ripples.min
@@ -16,5 +17,6 @@
 //= require dataTables/responsive/responsive.bootstrap.min
  *= require colorbox/colorbox
  *= require animate
+ *= require gmaps/gmaps
  *= require custom
  */

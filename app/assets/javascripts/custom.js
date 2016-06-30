@@ -66,3 +66,4 @@ $("#flowcheckall").click(function () {
         $('#articles-table tbody input[type="checkbox"]').prop('checked', this.checked);
     });
 });
+

@@ -19,6 +19,9 @@ class PostsController < ApplicationController
   def chart
     @visits = Visit.all
   end
+  def gmap
+    
+  end
   def visits_by_day
    render json: Visit.group_by_day(:visited_at, format: "%B %d, %Y").count
   end

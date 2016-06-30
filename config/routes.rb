@@ -1,6 +1,7 @@
 WebArticles::Application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
   get "posts/chart" => "posts#chart", :as => "chart"
+  get "posts/gmap" => "posts#gmap", :as => "gmap"
   get "posts/visits_by_day" => "posts#visits_by_day", :as => "visits_by_day"
   get "posts/word" => "posts#word", format: 'docx'
   resources :posts
