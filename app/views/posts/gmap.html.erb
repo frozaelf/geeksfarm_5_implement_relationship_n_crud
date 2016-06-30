@@ -1,0 +1,37 @@
+
+  <div id='container'>
+    <div class="download">
+      <a href="https://github.com/rjshade/gmaps-autocomplete/zipball/master">
+        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
+      <a href="https://github.com/rjshade/gmaps-autocomplete/tarball/master">
+        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+    </div>
+
+    <div id='instructions'>
+      <h1>Geocoding with Google Maps and jQuery UI</h1>
+      <p>This page shows how you can use the <a href="http://jqueryui.com/demos/autocomplete/">autocomplete widget</a> from <a href="http://jqueryui.com/">jQuery UI</a> in conjunction with the <a href="https://developers.google.com/maps/documentation/javascript/reference">Google Maps geocoding API</a> .
+      </p>
+      <p>
+      Start typing a in the search box to trigger the drop-down autocomplete menu. Reverse lookup is also implemented: click the map (or drag an existing marker) and the search box will be populated with the closest address Google can find.
+      </p>
+      <p>
+      The source code is on GitHub: <a href="https://github.com/rjshade/gmaps-autocomplete">rjshade/gmaps-autocomplete</a>
+      </p>
+    </div>
+
+    <hr/>
+
+    <div id='input'>
+      <input id='gmaps-input-address' placeholder='Start typing a place name...' type='text' />
+      <br/>
+      <br/>
+      Latitude: <span id='gmaps-output-latitude'></span>
+      <br/>
+      Longitude: <span id='gmaps-output-longitude'></span>
+      <br/>
+
+      <div id='gmaps-error'></div>
+    </div>
+
+    <div id='gmaps-canvas'></div>
+  </div>
