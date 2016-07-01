@@ -1,0 +1,15 @@
+<% content_for :head do %>
+ <title>CK Editor</title>
+ <meta name="description" content=""> 
+<% end %>
+<div class="row">
+  	<div class="col-md-12">
+	    <div id='instructions'>
+	      <h1>Ckeditor</h1>
+	     	<p>
+	      		Dokumentasinya ada di GitHub: <a href="https://github.com/galetahub/ckeditor">galetahub/ckeditor</a>
+	      	</p>	     	
+	    </div>
+  		<%= cktext_area :content, class: "ckeditor"%>
+  	</div>
+</div>
