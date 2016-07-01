@@ -4,7 +4,7 @@
              <h4><%= article.title %></h4>
              <%= image_tag article.image.url(:thumb),:class => "pull-left img-responsive thumb img-thumbnail m-r" %>
              <article><p>
-                 <%= article.content.truncate(225) %>   
+                 <%= strip_tags(article.content.html_safe.truncate(225)) %>   
              </p></article>
               <%= link_to 'read more', post_path(article.slug) %> 
          </div>
